@@ -6,12 +6,8 @@ import ReactDOM from "react-dom";
 import "../styles/index.css";
 
 //import your own components
-import SimpleCounter from "./component/SimpleCounter.jsx";
+// import Home from "./component/Home.jsx";
+import SimpleCounterBonus from "./component/SimpleCounterBonus.jsx";
 
-let counter = 0;
-setInterval(() => {
-    // render your react application
-    ReactDOM.render(<SimpleCounter counter={counter}/>, document.querySelector("#app"));
-    // incremento el contador
-    counter++;
-}, 1000);
+// render your react application
+ReactDOM.render(<SimpleCounterBonus />, document.querySelector("#app"));
