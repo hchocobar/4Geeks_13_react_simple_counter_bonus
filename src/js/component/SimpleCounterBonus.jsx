@@ -1,20 +1,29 @@
+// 1.- importar 
 import React, { useState, useEffect } from "react";
 
 
+// 2. defino el componente
 function SimpleCounterBonus () {
+    // 3. codigo de JS
+    // 3.1 defino todos los estados (useState)
+    // 3.2 ....
 	const [isActive, setIsActive] = useState(false);
 	const [counter, setCounter] = useState(0);
 	const [countDown, setCountDown] = useState(false);
-    const [status, setStatus] = useState({icon: "fas fa-clock", title: "Clock", className:"text-center"});
+    const [status, setStatus] = useState({icon: "fas fa-clock", 
+                                          title: "Clock", 
+                                          className:"text-center"});
 
+    // 3.3 Handler
 	const handleReset = () => {
 		setIsActive(false);
 		setCounter(0);
+        setCountDown(false);
         setStatus({icon:"fas fa-clock", title:"Clock", className:"text-center"});
 	};
 
     const handleStart = () => {
-        setIsActive(!isActive);
+        setIsActive(!isActive);  // ! significa negación, cambiando de True a False o viceversa.
         if (countDown) {
             setStatus({icon: "fas fa-history", title:"Timer", className:"text-center text-danger"});
         } else {
@@ -40,6 +49,7 @@ function SimpleCounterBonus () {
 
 	let nIntervalId;
 
+    // useEffect
 	useEffect(() => {
 		if (isActive) {
 			nIntervalId = setInterval(() => {
@@ -58,10 +68,10 @@ function SimpleCounterBonus () {
 		}
 	}, [isActive, counter, countDown]);
 
-
+    // 4. Ultimo comando de JS -> return con un único elemnto html
     return ( 
         <div className="conta">
-            <h1 className="text-center mt-5">Simple Counter</h1>
+            <h1 className="text-center mt-5">{"Simple Counter"}</h1>
             <h2 className={status.className}>{status.title}</h2>
             <div className="bigCounter">
                 <div><i className={status.icon}/></div>
@@ -81,13 +91,13 @@ function SimpleCounterBonus () {
                     </button>
                     <button type="button" className="btn btn-outline-danger"
                         onClick={() => handleReset()}>
-                            Reset
+                            {"Reset"}
                     </button>
                 </div>
             </div>
             <div className="container">
                 <div className="input-group my-3">
-                    <span className="input-group-text">Set Timer</span>
+                    <span className="input-group-text bg-warning">Set Timer</span>
                     <input type="text" aria-label="First name" className="form-control"
                             placeholder="Set the timer in tenths of a second" 
                             onChange={(e) => handleTimer(e)}/>
@@ -97,5 +107,5 @@ function SimpleCounterBonus () {
     );
 };
 
-
+// 5. exportar
 export default SimpleCounterBonus;
