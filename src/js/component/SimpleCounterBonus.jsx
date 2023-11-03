@@ -47,12 +47,11 @@ function SimpleCounterBonus () {
         }
     }
 
-	let nIntervalId;
 
     // useEffect
 	useEffect(() => {
 		if (isActive) {
-			nIntervalId = setInterval(() => {
+			const nIntervalId = setInterval(() => {
 				if (countDown === true && counter >= 0) {
 					if (counter === 0) {
 						setCounter(0);
