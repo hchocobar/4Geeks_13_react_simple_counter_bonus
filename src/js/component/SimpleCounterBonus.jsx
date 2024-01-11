@@ -25,9 +25,13 @@ function SimpleCounterBonus () {
     const handleStart = () => {
         setIsActive(!isActive);  // ! significa negación, cambiando de True a False o viceversa.
         if (countDown) {
-            setStatus({icon: "fas fa-history", title:"Timer", className:"text-center text-danger"});
+            setStatus({icon: "fas fa-history", 
+                       title:"Timer", 
+                       className:"text-center text-danger"});
         } else {
-            setStatus({icon: "fas fa-stopwatch", title:"Chronometer", className:"text-center text-primary"});
+            setStatus({icon: "fas fa-stopwatch", 
+                       title:"Chronometer", 
+                       className:"text-center text-primary"});
         }
     };
 
@@ -69,7 +73,7 @@ function SimpleCounterBonus () {
 
     // 4. Ultimo comando de JS -> return con un único elemnto html
     return ( 
-        <div className="conta">
+        <div>
             <h1 className="text-center mt-5">{"Simple Counter"}</h1>
             <h2 className={status.className}>{status.title}</h2>
             <div className="bigCounter">
@@ -94,8 +98,8 @@ function SimpleCounterBonus () {
                     </button>
                 </div>
             </div>
-            <div className="container">
-                <div className="input-group my-3">
+            <div className="container bg-dark">
+                <div className="input-group my-3 p-3">
                     <span className="input-group-text bg-warning">Set Timer</span>
                     <input type="text" aria-label="First name" className="form-control"
                             placeholder="Set the timer in tenths of a second" 
