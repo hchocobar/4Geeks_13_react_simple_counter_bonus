@@ -76,7 +76,7 @@ function SimpleCounterBonus () {
         <div>
             <h1 className="text-center mt-5">{"Simple Counter"}</h1>
             <h2 className={status.className}>{status.title}</h2>
-            <div className="bigCounter">
+            <div className="big-counter">
                 <div><i className={status.icon}/></div>
                 <div>{Math.floor(counter / 10000000) % 10}</div>
                 <div>{Math.floor(counter / 1000000) % 10}</div>

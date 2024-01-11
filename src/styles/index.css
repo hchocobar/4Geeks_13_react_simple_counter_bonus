@@ -1,8 +1,8 @@
-.bigCounter {
+.big-counter {
     text-align: center;
     background: black;
 }
-.bigCounter div {
+.big-counter div {
     display: inline-block;
     font-size: 60px;
     background: #161B22;
