@@ -6,8 +6,8 @@ import ReactDOM from "react-dom";
 import "../styles/index.css";
 
 //import your own components
-// import Home from "./component/Home.jsx";
-import SimpleCounterBonus from "./component/SimpleCounterBonus.jsx";
+import Home from "./component/Home.jsx";
+
 
 // render your react application
-ReactDOM.render(<SimpleCounterBonus />, document.querySelector("#app"));
+ReactDOM.render(<Home />, document.querySelector("#app"));

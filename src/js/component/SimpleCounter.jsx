@@ -1,30 +1,18 @@
 import React, { useState, useEffect } from "react";
 
 
-// 5. exportar y 2. defino el componente
-export const SimpleCounterBonus = () => {
-    // 3. codigo de JS
-    // 3.1 defino todos los estados (useState)
-    // 3.2 ....
+export const SimpleCounter = () => {
 	const [counter, setCounter] = useState(0);
 	const [isRunning, setIsRunning] = useState(false);
     const [status, setStatus] = useState({icon: "fas fa-clock", 
                                           title: "Clock", 
                                           titleStyle:"text-center text-success"});
-	const [countUp, setCountUp] = useState(true);
 
-    // 3.3 Handler
     const handleStart = () => {
         setIsRunning(!isRunning);  // ! significa negación, cambiando de True a False o viceversa.
-        if (countUp) {
-            setStatus({icon: "fas fa-stopwatch", 
-                       title:"Chronometer", 
-                       titleStyle:"text-center text-primary"});
-        } else {
-            setStatus({icon: "fas fa-history", 
-                       title:"Timer", 
-                       titleStyle:"text-center text-danger"});
-        }
+        setStatus({icon: "fas fa-stopwatch", 
+                   title:"Chronometer", 
+                   titleStyle:"text-center text-primary"});
     };
 
 	const handleReset = () => {
@@ -33,51 +21,20 @@ export const SimpleCounterBonus = () => {
         setStatus({icon:"fas fa-clock", 
                    title:"Clock", 
                    titleStyle:"text-center text-success"});
-        setCountUp(true);
 	};
 
-    const handleTimer = (event) => {
-        if (event.target.value !== null && 
-            event.target.value >= 0 && 
-            event.target.value.length > 0 && 
-            !isNaN(event.target.value)) 
-        {
-            setCounter(parseInt(event.target.value));
-            setStatus({icon: "fas fa-history", 
-                       title:"Timer", 
-                       titleStyle:"text-center text-danger"});
-            setCountUp(false);
-        } else {
-            setCounter(0);
-            event.target.value = "";
-        }
-    }
 
-
-    // useEffect
 	useEffect(() => {
 		if (isRunning) {
 			const newInterval = setInterval(() => {
-				if (countUp) {
-					setCounter(counter => counter + 1);
-				} else {
-                    if (countUp === false && counter >= 0) {
-                        if (counter === 0) {
-                            setCounter(0);
-                            setIsRunning(false);
-                        } else {
-                            setCounter(counter => counter - 1);
-                        }
-    				}
-                }
+				setCounter(counter => counter + 1);
 			}, 10);
 
 			return () => clearInterval(newInterval);
 		}
-	}, [isRunning, counter, countUp]);
+	}, [isRunning]);
 
 
-    // 4. Ultimo comando de JS -> return con un único elemnto html
     return ( 
         <div className="container">
             <h1 className="mt-5">Simple Counter</h1>
@@ -101,12 +58,6 @@ export const SimpleCounterBonus = () => {
                     <button type="button" onClick={handleReset} className="btn btn-outline-danger">
                         Reset
                     </button>
-                </div>
-            </div>
-            <div className="container bg-dark">
-                <div className="input-group my-3 p-3">
-                    <span className="input-group-text bg-warning">Set Timer</span>
-                    <input type="text" onChange={(event) => handleTimer(event)} aria-label="First name" className="form-control" placeholder="Set the timer in tenths of a second"/>
                 </div>
             </div>
         </div>
